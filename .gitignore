@@ -53,3 +53,6 @@ dkms.conf
 
 # all VS code workspace files
 *.code-workspace
+
+# build file
+C_Implementation/mrfast
