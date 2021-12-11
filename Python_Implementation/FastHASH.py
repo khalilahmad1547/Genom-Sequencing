@@ -50,3 +50,26 @@ if raw_data[0] == ">":
 # removing all the endline parameters from the string
 # this will give a long complete string of given refrence genome
 data = data.replace("\n", "")
+
+# %%
+# a function which returns Hash-Table
+
+
+def getHashTable(ref_genome: str, k: int = 12) -> dict:
+    """
+    ref_genome: a whole genome for which Hash Table has to be build
+    k: size of k-mer to be taken (by default k = 12)
+    returns: this function will returns a dict with k-mers as keys
+        list of all the index (of k-mers) as respective value e.g.
+        {
+            "k_mer_1":[5, 10, 100],
+            "k_mer_2":[500, 2, 487]
+        }
+    """
+    # an empty dict which will store the results
+    res = {}
+    for each_k_mer in getK_mers(ref_genome, k):
+        # saving each k-mer as dict key and list of index as values
+        res[each_k_mer] = getAllIndex(each_k_mer, ref_genome)
+
+    return res
