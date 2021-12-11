@@ -2,6 +2,9 @@
 # all the required pakages
 import re
 
+# for saving Hash Table as JSON file to disk
+import json
+
 # %%
 # a function which can return consective k-mers of a string
 
@@ -73,3 +76,14 @@ def getHashTable(ref_genome: str, k: int = 12) -> dict:
         res[each_k_mer] = getAllIndex(each_k_mer, ref_genome)
 
     return res
+
+# %%
+
+
+def saveHashTable(hash_table: dict, file_name: str):
+    """
+    hash_table: a dict which have to be saved
+    file_name: file name to which data have to be save
+    """
+    with open(file_name, "w") as outfile:
+        json.dump(hash_table, outfile)
