@@ -1,5 +1,11 @@
 # %%
+# all the required pakages
+import re
+
+# %%
 # a function which can return consective k-mers of a string
+
+
 def getK_mers(str: str, k: int) -> list:
     """
     str: a string from which k-mers have to be constructed
@@ -10,6 +16,20 @@ def getK_mers(str: str, k: int) -> list:
         k_mers.append(str[i: i + k])
 
     return k_mers
+
+# %%
+
+
+def getAllIndex(to_find: str, from_str: str) -> list:
+    """
+    to_find: a short string to find from the other string
+    from_str: a usally long string in which sub string is to be find
+    return: this function will returns a list of all the index of to_find(sub string) in the from_str(greater string)
+    """
+    # using list comprehension + startswith()
+    # All occurrences of substring in string
+    res = [i.start() for i in re.finditer(to_find, from_str)]
+    return res
 
 
 # %%
