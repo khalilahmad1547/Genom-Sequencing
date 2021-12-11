@@ -56,3 +56,6 @@ dkms.conf
 
 # build file
 C_Implementation/mrfast
+
+# JSON files which are used to stores Hash Tables
+*.json
