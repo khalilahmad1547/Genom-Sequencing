@@ -87,3 +87,18 @@ def saveHashTable(hash_table: dict, file_name: str):
     """
     with open(file_name, "w") as outfile:
         json.dump(hash_table, outfile)
+
+# %%
+# this function loads Hash-Table from JSON file to dict object
+
+
+def loadHashTable(file_name: str) -> dict:
+    """
+    file_name: name of JSON file to loade hash table
+    returns
+        a python dict object of Hash Table 
+    """
+    # opening json file to read
+    file = open(file_name, "r")
+    # loade data from json file
+    return json.load(file)
