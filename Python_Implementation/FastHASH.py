@@ -34,25 +34,34 @@ def getAllIndex(to_find: str, from_str: str) -> list:
     res = [i.start() for i in re.finditer(to_find, from_str)]
     return res
 
-
 # %%
-# loade the data from .fasta file
-file = open("../Data/refgen.fasta", "r")
-# reading the whole file
-raw_data = file.read()
+# function returns cleaned genome from given file
 
-# doing data clean-up if needed
-# if we find ">" at the start we need to remove this line
-# this first line only for mata-data
-if raw_data[0] == ">":
-    # finding the end of first line by raw_data.find("\n")
-    # returns the index of first match
-    # keep all the string except first line
-    data = raw_data[raw_data.find("\n"):]
 
-# removing all the endline parameters from the string
-# this will give a long complete string of given refrence genome
-data = data.replace("\n", "")
+def readGenome(file_name: str) -> str:
+    """
+    file_name: file from which genome is to be read
+    returns:
+        genome as a string
+    """
+    # loade the data from .fasta file
+    file = open(file_name, "r")
+    # reading the whole file
+    raw_data = file.read()
+
+    # doing data clean-up if needed
+    # if we find ">" at the start we need to remove this line
+    # this first line only for mata-data
+    if raw_data[0] == ">":
+        # finding the end of first line by raw_data.find("\n")
+        # returns the index of first match
+        # keep all the string except first line
+        data = raw_data[raw_data.find("\n"):]
+
+    # removing all the endline parameters from the string
+    # this will give a long complete string of given refrence genome
+    data = data.replace("\n", "")
+    return data
 
 # %%
 # a function which returns Hash-Table
