@@ -1,5 +1,11 @@
 # FastHASH Algorithm
-
+- [FastHASH Algorithm](#fasthash-algorithm)
+  - [Background](#background)
+    - [What is Genome Sequencing?](#what-is-genome-sequencing)
+  - [Introduction](#introduction)
+- [Usage](#usage)
+  - [Setup the environment](#setup-the-environment)
+- [Note:](#note)
 ## Background
 
 ### What is Genome Sequencing?
@@ -28,6 +34,12 @@ By adding
   improvments to mrFAST algorithm we got a new algorithm **FastHASH**.
 
 # Usage
+## Setup the environment
+ - Setup Environment
+run follwing command to setup anaconda environment with all the required pakages.  
+`conda env create --file environment.yml`  
+ - activate the environment by following command  
+  `conda activate fyp_env`
 
 For testing or debugging purpose a small dataset is present in ./Data
 
