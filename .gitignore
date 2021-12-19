@@ -59,3 +59,8 @@ C_Implementation/mrfast
 
 # JSON files which are used to stores Hash Tables
 *.json
+
+# all pdf, png, svg files in which a de-burijn graph can be rendered
+*.pdf
+*.png
+*.svg
