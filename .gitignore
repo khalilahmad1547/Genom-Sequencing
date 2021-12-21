@@ -64,3 +64,6 @@ C_Implementation/mrfast
 *.pdf
 *.png
 *.svg
+
+# all data is ignored
+Data/*
