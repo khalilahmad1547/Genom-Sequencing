@@ -24,12 +24,15 @@ module mapper_tb();
 
 parameter m = 8;
 parameter n = 3;
+parameter p = 10;
 
-reg [m-1:0] read;
-reg [m-1:0] ref_gen;
-reg clk;
-reg [n-1:0] limit;
-wire        isOk;
+reg  [m-1:0]   read;
+reg  [m-1:0]   ref_gen;
+reg  [n-1:0]   limit;
+reg  [p-1:0]   loc;
+reg            clk;
+wire [m+p-1:0] read_loc;
+wire           toStore;
 
 mapper  #(.m(m),
           .n(n))
@@ -37,11 +40,14 @@ mapper_inst(.read(read),
             .ref_gen(ref_gen),
             .clk(clk),
             .limit(limit),
-            .isOK(isOK));
+            .loc(loc),
+            .read_loc(read_loc),
+            .toStore(toStore));
 
 initial begin
     clk = 0;
-    limit = 3'b010;
+    limit = 3'b001;
+    loc = 18'd105;
 end
 always #2
     clk = ~clk;

@@ -31,22 +31,26 @@ INPUTS:
     read    -> m bits for read to be mapped
     ref_gen -> m bits for reference genome to which read is to be mapped
     limit   -> n bits number for the allow limit of error
-    
+    loc     -> p bits starting location of the reference genome
 OUTPUT:
-    isOK    -> 1 bit bolean read mapes(1) or not(0)
+    read_loc -> m + p bits with first m bits of read and p bits for locations
+    done     -> 1 bit signal for weather in process(0) or done(1)
+    toStore  -> 1 bit number, weather it is worth to store the location data to FIFO or not
 */
 
 module mapper#(parameter m = 24,
                parameter n = 5,
                parameter p = 10)
-              (input [m-1:0] read,
-               input [m-1:0] ref_gen,
-               input [n-1:0] limit,
-               input [p-1:0] loc,
-               input         clk,
-               output        isOK);
+              (input  [m-1:0]   read,
+               input  [m-1:0]   ref_gen,
+               input  [n-1:0]   limit,
+               input  [p-1:0]   loc,
+               input            clk,
+               output [m+p-1:0] read_loc,
+               output           toStore);
     // to carry calculated error of the read from the ref genome
     wire [n-1:0] error;
+    wire         isOK;
     
     // an instant of the Diff module
     diff #(.m(m),
@@ -62,4 +66,11 @@ module mapper#(parameter m = 24,
                      .limit(limit),
                      .clk(clk),
                      .isOk(isOK));
+    
+    // it will pass read_loca only if read mapes, or it will gives all 0s 
+    assign read_loc = {m+p{isOK}} & {read, loc};
+    
+    // genreating toStore signal
+    assign toStore = |read_loc;
+    
 endmodule
