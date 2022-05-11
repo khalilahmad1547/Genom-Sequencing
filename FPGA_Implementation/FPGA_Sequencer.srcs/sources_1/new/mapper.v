@@ -33,6 +33,7 @@ INPUTS:
     limit   -> n bits number for the allow limit of error
     
 OUTPUT:
+    isOK    -> 1 bit bolean read mapes(1) or not(0)
 */
 
 module mapper#(parameter m = 24,
