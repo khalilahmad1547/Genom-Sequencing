@@ -22,9 +22,14 @@
 This is a single core for the mapper. it takes read and reference genome and gives the location whear it mappes
 to the reference genome.
 PARAMS:
-
+    m       -> number of bits in Read and refernce genome
+    n       -> number of bits for allowed error limit
+    p       -> number of bits required for locations of a read in the whole genome
 INPUTS:
-
+    read    -> m bits for read to be mapped
+    ref_gen -> m bits for reference genome to which read is to be mapped
+    limit   -> n bits number for the allow limit of error
+    isOK    -> 1 bit bolean read mapes(1) or not(0)
 OUTPUT:
 */
 
