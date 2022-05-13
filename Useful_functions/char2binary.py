@@ -11,7 +11,7 @@ file_name = ''
 try:
     file_name = sys.argv[1]
 except IndexError:
-    file_name = ''
+    pass
 
 
 converts = {
