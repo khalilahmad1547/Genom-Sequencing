@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 05/08/2022 04:23:54 PM
+// Create Date: 05/14/2022 03:37:13 AM
 // Design Name: 
-// Module Name: counter
+// Module Name: error_counter
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -29,12 +29,12 @@ OUTPUT:
     count   -> gives total number of 1's in the stream
 */
 
-module counter #(parameter m = 24,
-                 parameter n = 7)
-                 (input [m-1:0] stream,
-                 input clk,
-                 output reg [n-1:0] count = 0
-                    );
+module error_counter #(parameter m = 24,
+                       parameter n = 7)
+                      (input [m-1:0] stream,
+                       input clk,
+                       output reg [n-1:0] count = 0
+                       );
      integer i = 0;
      always @(posedge clk) begin
          count = 0;

@@ -46,9 +46,9 @@ module diff #(parameter m = 24,
                       .ref_gen(ref_gen),
                       .clk(clk),
                       .mask(gen_mask));
-    counter #(.m(m),
-              .n(n))
-    counter_inst(.stream(gen_mask),
-               .clk(clk),
-               .count(error));
+    error_counter #(.m(m),
+                    .n(n))
+    ec_inst(.stream(gen_mask),
+            .clk(clk),
+            .count(error));
 endmodule
