@@ -66,7 +66,7 @@ C_Implementation/mrfast
 *.svg
 
 # all data is ignored
-Data/*
+# Data/*
 
 # all files for Vivado
 #########################################################################################
