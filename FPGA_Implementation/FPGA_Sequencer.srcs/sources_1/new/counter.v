@@ -43,7 +43,7 @@ module counter #(parameter b = 8)
                  input              upCount,
                  input              reset,
                  input              clk,
-                 output reg [b-1:0] p_count,
+                 output reg [b-1:0] p_count = 0,
                  output reg         limit_over);
        
        always @(posedge clk) begin
