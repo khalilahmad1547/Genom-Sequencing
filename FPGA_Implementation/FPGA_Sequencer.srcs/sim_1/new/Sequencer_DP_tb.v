@@ -105,9 +105,9 @@ initial begin
     $readmemb("C:/Users/khali/Downloads/Documents/Computer_Engineering/Semester_08/FYP_III/Class/Genom-Sequencing/Data/temp_ref_gen.txt", ref_gens_v);
 
     for (j=0; j<t_ref_gen; j=j+1) begin
-        ref_gen = ref_gens_v[j];
+        ref_gen <= ref_gens_v[j];
         for (i=0; i<t_reads; i=i+1) begin
-            read = reads_v[i];
+            read <= reads_v[i];
             #period;
         end
     end

@@ -113,8 +113,4 @@ module Sequencer_DP #(parameter m = 24,
                    .clk(clk),
                    .p_count(loc),
                    .limit_over(ref_gen_done));
-    
-    always @(posedge clk) begin
-        
-    end
 endmodule
