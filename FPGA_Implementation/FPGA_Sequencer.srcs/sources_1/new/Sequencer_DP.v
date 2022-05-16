@@ -22,6 +22,11 @@
 Sequencer module is splited into two parts
     1. Sequencer_DP (Data Path)
     2. Sequencer_CU (Controler Unit)
+
+Lammbda Virous
+Ref gen lenght = 48502 bases = 16 bits
+Total reads = 963 = 10 bits
+read lenght = 70 bases = 140 bits
 PARAMS:
     m            -> number of bits in Read and refernce genome
     n            -> number of bits for allowed error limit
@@ -44,9 +49,9 @@ OUTPUTS:
     toStore      -> 1 bit number, weather it is worth to store the location data to FIFO or not
 */
 
-module Sequencer_DP #(parameter m = 24,
+module Sequencer_DP #(parameter m = 140,
                       parameter n = 3,
-                      parameter p = 10,
+                      parameter p = 16,
                       parameter a = 10, 
                       parameter b = 10)
                      (
