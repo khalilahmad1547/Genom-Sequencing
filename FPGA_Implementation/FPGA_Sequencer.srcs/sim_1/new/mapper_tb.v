@@ -22,7 +22,7 @@
 
 module mapper_tb();
 
-parameter m = 8;
+parameter m = 12;
 parameter n = 3;
 parameter p = 10;
 
@@ -41,12 +41,14 @@ wire [m+p-1:0] read_loc;
 wire           toStore;
 
 // total reads in the file
-parameter t_read = 4;
+parameter t_read = 10;
+parameter t_ref_gens = 10;
 // input data's vector
-reg [m-1:0] file[0:t_read-1];
+reg [m-1:0] read_file[0:t_read-1];
+reg [m-1:0] ref_file[0:t_ref_gens-1];
 
 // for loops
-integer i, j;
+integer i, j, k;
 
 // for output file
 integer out_file;
@@ -71,13 +73,20 @@ always #clk_flip
     
 initial begin
 // feeding data
-    $readmemb("C:/Users/khali/Downloads/Documents/Computer_Engineering/Semester_08/FYP_III/Class/Genom-Sequencing/Data/temp.txt", file);
+    $readmemb("C:/Users/khali/Downloads/Documents/Computer_Engineering/Semester_08/FYP_III/Class/Genom-Sequencing/Data/temp_reads.txt", read_file);
+    $readmemb("C:/Users/khali/Downloads/Documents/Computer_Engineering/Semester_08/FYP_III/Class/Genom-Sequencing/Data/temp_ref_gen.txt", ref_file);
 
-    for (i=0; i<t_read; i=i+1)
+    
+    
+    for (j=0; j<t_ref_gens; j=j+1)
         begin
-            read <= file[i];
-            //$display(read);
-            #period;
+            ref_gen = ref_file[j];
+            for (i=0; i<t_read; i=i+1)
+            begin
+                read = read_file[i];
+                //$display(read);
+                #period;
+            end
         end
 end
 
@@ -85,7 +94,7 @@ initial begin
 // writing results data
     out_file = $fopen("C:/Users/khali/Downloads/Documents/Computer_Engineering/Semester_08/FYP_III/Class/Genom-Sequencing/Data/output.txt", "w");
     
-    for (j=0; j<t_read; j=j+1)
+    for (k=0; k<t_read*t_ref_gens; k=k+1)
         begin
             $fdisplay(out_file, "%b %b", read_loc, toStore);
             //$display("->%b %b", read_loc, toStore);

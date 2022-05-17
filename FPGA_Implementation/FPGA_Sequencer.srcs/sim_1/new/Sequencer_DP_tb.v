@@ -26,7 +26,7 @@ module Sequencer_DP_tb();
 parameter clk_flip = 5;
 parameter period = 10;
 
-parameter m = 16;
+parameter m = 12;
 parameter n = 3;
 parameter p = 4;
 parameter a = 4;
@@ -38,8 +38,8 @@ reg  [m-1:0]     ref_gen;
 reg  [n-1:0]     limit;
 reg              next_read;
 reg              next_ref_gen;
-reg  [a-1:0]     t_reads;
-reg  [b-1:0]     t_ref_gen;
+reg  [a-1:0]     t_reads = 10;
+reg  [b-1:0]     t_ref_gen = 10;
 reg              clk;
 reg              read_cnt_reset;
 reg              ref_gen_cnt_reset;
@@ -52,8 +52,8 @@ wire             ref_gen_done;
 wire             toStore;
 
 // input vector
-reg [m-1:0] reads_v [0:a-1];
-reg [m-1:0] ref_gens_v [0:b-1];
+reg [m-1:0] reads_v [0:9];
+reg [m-1:0] ref_gens_v [0:9];
 
 // loop variables
 integer i = 0;
@@ -104,10 +104,10 @@ initial begin
     $readmemb("C:/Users/khali/Downloads/Documents/Computer_Engineering/Semester_08/FYP_III/Class/Genom-Sequencing/Data/temp_reads.txt", reads_v);
     $readmemb("C:/Users/khali/Downloads/Documents/Computer_Engineering/Semester_08/FYP_III/Class/Genom-Sequencing/Data/temp_ref_gen.txt", ref_gens_v);
 
-    for (j=0; j<t_ref_gen; j=j+1) begin
-        ref_gen <= ref_gens_v[j];
-        for (i=0; i<t_reads; i=i+1) begin
-            read <= reads_v[i];
+    for (i=0; i<t_ref_gen; i=i+1) begin
+        ref_gen = ref_gens_v[i];
+        for (j=0; j<t_reads; j=j+1) begin
+            read = reads_v[j];
             #period;
         end
     end
