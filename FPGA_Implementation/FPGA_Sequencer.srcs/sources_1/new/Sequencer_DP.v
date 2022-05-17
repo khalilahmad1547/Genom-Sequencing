@@ -23,7 +23,7 @@ Sequencer module is splited into two parts
     1. Sequencer_DP (Data Path)
     2. Sequencer_CU (Controler Unit)
 
-Lammbda Virous
+Lammbda Virus
 Ref gen lenght = 48502 bases = 16 bits
 Total reads = 963 = 10 bits
 read lenght = 70 bases = 140 bits

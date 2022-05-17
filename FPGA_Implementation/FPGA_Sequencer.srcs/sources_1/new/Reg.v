@@ -19,16 +19,16 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 /*
-This is a simple regester which will have more controles like write enable pin, 
-weather write data to regester or not and reset pin.
+This is a simple regester which will have more controls like write enable pin, 
+whether write data to register or not and reset pin.
 PARAMS:
-    d       -> number of bits to store in regester
+    d       -> number of bits to store in register
 INPUTS:
     data    -> d bits of data to be stored in the regester
-    write   -> 1 bit controle signal, 1 means write data to regester
+    write   -> 1 bit controle signal, 1 means write data to register
     reset   -> 1 bit reset pin, when high set regester to zero.
 OUPUTS:
-    output  -> d bits of data which is stored in the regester
+    output  -> d bits of data which is stored in the register
 */
 
 module Reg #(parameter d = 24)
