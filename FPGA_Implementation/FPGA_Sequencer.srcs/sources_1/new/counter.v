@@ -44,7 +44,7 @@ module counter #(parameter b = 8)
                  input              reset,
                  input              clk,
                  output reg [b-1:0] p_count = 0,
-                 output reg         limit_over);
+                 output reg         limit_over = 0);
        
        always @(posedge clk) begin
             if(reset) begin
