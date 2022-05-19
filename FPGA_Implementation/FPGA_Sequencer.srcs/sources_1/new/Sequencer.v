@@ -19,15 +19,16 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-// for reads of 25 bases
-// for 50 max error = 6 bits
-// total locations in the genome is 962624 = 20 bits
-module Sequencer    #(parameter m = 50,
-                      parameter n = 6,
-                      parameter p = 20,
-                      parameter a = 20, 
-                      parameter b = 20)
+// let k = 12 -> m = 12 * 2 = 24 bits
+// total bases = n = 9626243
+// total reads = n - k + 1 = 9626243 - 12 + 1 = 9626232 = 
+// max error = 12 edits = 4 bits
+// total locations in the genome is 9626243 = 24 bits
+module Sequencer    #(parameter m = 24,
+                      parameter n = 4,
+                      parameter p = 24,
+                      parameter a = 24, 
+                      parameter b = 24)
                      (
                       input  [m-1:0]     read,
                       input  [m-1:0]     ref_gen,
