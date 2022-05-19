@@ -32,13 +32,13 @@ OUPUTS:
 */
 
 module diff #(parameter m = 24,
-              parameter n = 5)
+              parameter n = 4)
              (input [m-1:0] read,
               input [m-1:0] ref_gen,
               input clk,
               output [n-1:0] error);
     
-    wire [m-1:0] gen_mask;   // for genreated mask from the Hamming Mask module
+    wire [(m/2)-1:0] gen_mask;   // for genreated mask from the Hamming Mask module
     
     // a Hamming Mask instant which will genreate mask 
     hamming_mask #(.m(m)) 
@@ -46,7 +46,7 @@ module diff #(parameter m = 24,
                       .ref_gen(ref_gen),
                       .clk(clk),
                       .mask(gen_mask));
-    error_counter #(.m(m),
+    error_counter #(.m(m/2),
                     .n(n))
     ec_inst(.stream(gen_mask),
             .clk(clk),
