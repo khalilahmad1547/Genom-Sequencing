@@ -37,6 +37,7 @@ module Sequencer_CU(input      done,
                     input      reads_done,
                     input      ref_gen_done,
                     input      clk,
+                    output reg next_ref_gen,
                     output reg next_read,
                     output reg read_cnt_reset,
                     output reg ref_gen_cnt_reset);
@@ -52,7 +53,13 @@ module Sequencer_CU(input      done,
       end
       
       always @(posedge clk) begin
-        if(ref_gen_done) ref_gen_cnt_reset <= 1'b1;
-        else ref_gen_cnt_reset <= 1'b0;
+          if(ref_gen_done)begin
+            ref_gen_cnt_reset <= 1'b1;
+            next_ref_gen <= 1'b1;  
+          end   
+        else begin
+           ref_gen_cnt_reset <= 1'b0; 
+           next_ref_gen <= 1'b0;
+        end
       end
 endmodule
