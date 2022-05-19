@@ -20,11 +20,14 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Sequencer    #(parameter m = 140,
-                      parameter n = 3,
-                      parameter p = 16,
-                      parameter a = 10, 
-                      parameter b = 10)
+// for reads of 25 bases
+// for 50 max error = 6 bits
+// total locations in the genome is 962624 = 20 bits
+module Sequencer    #(parameter m = 50,
+                      parameter n = 6,
+                      parameter p = 20,
+                      parameter a = 20, 
+                      parameter b = 20)
                      (
                       input  [m-1:0]     read,
                       input  [m-1:0]     ref_gen,
