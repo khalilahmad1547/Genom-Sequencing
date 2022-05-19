@@ -32,10 +32,18 @@ module hamming_mask#(parameter m = 24)(
     input [m - 1:0]      read,
     input [m - 1:0]      ref_gen,
     input clk,
-    output reg [m - 1:0] mask = 0
+    output reg [(m/2) - 1:0] mask = 0
     );
-    
+
+    integer i;
+    integer k = 0;
     always @(posedge clk)
-        mask <= read ^ ref_gen;
+        begin
+            for ( i=0 ; i < m ; i = i+2) begin
+                mask[k] <= ((read[i] ^ ref_gen[i]) | (read[i+1] ^ ref_gen[i+1]));
+                k   = k + 1;
+            end
+        end
+        // mask <= read ^ ref_gen;
     
 endmodule
